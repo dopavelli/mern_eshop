@@ -9,3 +9,33 @@ h3 {
 .rating span {
   margin: 0.1rem;
 }
+
+button:hover {
+  transform: scale(1.02);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+.btn:hover {
+  transform: scale(1.02);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+a .nav_link {
+  color: lightgray;
+}
+
+a .nav_link:hover {
+  color: #fff;
+  transform: scale(1.05);
+}
+
+a .nav_link:active {
+  color: grey;
+  transform: scale(0.98);
+}
