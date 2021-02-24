@@ -4,8 +4,8 @@ import { Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { register } from '../actions/userActions';
 import FormContainer from '../components/FormContainer';
+import { register } from '../actions/userActions';
 
 const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState('');
@@ -46,7 +46,7 @@ const RegisterScreen = ({ location, history }) => {
         <Form.Group controlId="name">
           <Form.Label>Name</Form.Label>
           <Form.Control
-            type="name"
+            type="text"
             placeholder="Enter your name"
             value={name}
             onChange={(e) => {
