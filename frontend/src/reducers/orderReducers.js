@@ -26,9 +26,7 @@ export const orderCreateReducer = (state = {}, action) => {
       };
 
     default:
-      return {
-        state,
-      };
+      return state;
   }
 };
 
@@ -36,6 +34,7 @@ export const orderDetailsReducer = (
   state = { loading: true, orderItems: [], shippingAddress: {} },
   action
 ) => {
+  console.log('order details reducer - test', action.type);
   switch (action.type) {
     case ORDER_DETAILS_REQUEST:
       return {
@@ -54,8 +53,6 @@ export const orderDetailsReducer = (
       };
 
     default:
-      return {
-        state,
-      };
+      return state;
   }
 };

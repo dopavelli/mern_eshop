@@ -9,9 +9,6 @@ import { getOrderDetails } from '../actions/orderActions';
 const OrderScreen = ({ match, history }) => {
   const orderId = match.params.id;
 
-  console.log(match.params.id);
-  console.log('test');
-
   const dispatch = useDispatch();
 
   const orderDetail = useSelector((state) => state.orderDetail);
@@ -19,6 +16,7 @@ const OrderScreen = ({ match, history }) => {
 
   useEffect(() => {
     dispatch(getOrderDetails(orderId));
+    console.log(match.params.id);
   }, []);
 
   return loading ? (
