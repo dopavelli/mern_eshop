@@ -40,7 +40,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
 //@DESC     Get order by ID
 //@ROUTE    GET /api/orders/:id
 //@ACCESS   Private
-const getOrderbyId = asyncHandler(async (req, res) => {
+const getOrderById = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id).populate(
     'user',
     'name email'
@@ -54,4 +54,4 @@ const getOrderbyId = asyncHandler(async (req, res) => {
   }
 });
 
-export { addOrderItems, getOrderbyId };
+export { addOrderItems, getOrderById };
