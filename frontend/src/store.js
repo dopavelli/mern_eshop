@@ -3,8 +3,9 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import {
-  productListReducers,
-  productDetailsReducers,
+  productListReducer,
+  productDetailsReducer,
+  productDeleteReducer,
 } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
 import {
@@ -24,8 +25,9 @@ import {
 } from './reducers/orderReducers';
 
 const reducer = combineReducers({
-  productList: productListReducers,
-  productDetails: productDetailsReducers,
+  productList: productListReducer,
+  productDetails: productDetailsReducer,
+  productDelete: productDeleteReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
