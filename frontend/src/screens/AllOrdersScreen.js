@@ -4,37 +4,35 @@ import { Table, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { listUsers, deleteUser } from '../actions/userActions';
+import { listAllOrders } from '../actions/orderActions';
 
-const UserListScreen = ({ history }) => {
+const AllOrdersScreen = ({ history }) => {
   const dispatch = useDispatch();
 
-  const userList = useSelector((state) => state.userList);
-  const { loading, error, users } = userList;
-
-  const userDelete = useSelector((state) => state.userDelete);
-  const { success: successDelete } = userDelete;
+  const orderList = useSelector((state) => state.orderList);
+  const { loading, error, orders } = orderList;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
-      dispatch(listUsers());
+      dispatch(listAllOrders());
     } else {
       history.push('/login');
     }
-  }, [dispatch, history, successDelete, userInfo]);
+  }, [dispatch, history, userInfo]);
 
   const deleteHandler = (id) => {
-    if (window.confirm('Are you sure?')) {
-      dispatch(deleteUser(id));
-    }
+    // if (window.confirm('Are you sure?')) {
+    //   dispatch(deleteOrder(id));
+    // }
   };
 
   return (
     <>
-      <h1>All USERS</h1>
+      <h1>All ORDERS</h1>
+
       {loading ? (
         <Loader />
       ) : error ? (
@@ -44,38 +42,53 @@ const UserListScreen = ({ history }) => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>NAME</th>
-              <th>EMAIL</th>
-              <th>ADMIN</th>
+              <th>USER</th>
+              <th>TOTAL PRICE</th>
+              <th>CREATED AT</th>
+              <th>PAID</th>
+              <th>DELIVERED</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user) => (
-              <tr key={user._id}>
-                <td>{user._id}</td>
-                <td>{user.name}</td>
+            {orders.map((order) => (
+              <tr key={order._id}>
+                <td>{order._id}</td>
                 <td>
-                  <a href={`mailto:${user.email}`}>{user.email}</a>
+                  {order.user && order.user.name}
+                  {/* <LinkContainer to={`/admin/user/${order.user._id}/edit`}>
+                      {order.user.name}
+                    </LinkContainer> */}
                 </td>
                 <td>
-                  {user.isAdmin ? (
+                  <span className="cash">$ {order.totalPrice}</span>
+                </td>
+                <td>{order.createdAt.substring(0, 10)}</td>
+                <td>
+                  {order.isPaid ? (
                     <i className="fas fa-check" style={{ color: 'green' }}></i>
                   ) : (
                     <i className="fas fa-times" style={{ color: 'red' }}></i>
                   )}
                 </td>
                 <td>
-                  <LinkContainer to={`/admin/user/${user._id}/edit`}>
+                  {order.isDelivered ? (
+                    <i className="fas fa-check" style={{ color: 'green' }}></i>
+                  ) : (
+                    <i className="fas fa-times" style={{ color: 'red' }}></i>
+                  )}
+                </td>
+                <td>
+                  <LinkContainer to={`/orders/${order._id}`}>
                     <Button variant="warning" className="btn-sm">
-                      <i className="fas fa-edit"></i>
+                      <i className="fas fa-shopping-cart"></i> Details...
                     </Button>
                   </LinkContainer>{' '}
                   <Button
                     variant="danger"
                     className="btn-sm"
                     onClick={() => {
-                      deleteHandler(user._id);
+                      deleteHandler(order._id);
                     }}
                   >
                     <i className="fas fa-trash"></i>
@@ -90,4 +103,4 @@ const UserListScreen = ({ history }) => {
   );
 };
 
-export default UserListScreen;
+export default AllOrdersScreen;

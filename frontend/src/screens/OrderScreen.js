@@ -25,6 +25,9 @@ const OrderScreen = ({ match, history }) => {
   const orderPay = useSelector((state) => state.orderPay);
   const { success: successPay, loading: loadingPay } = orderPay;
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   if (!loading) {
     // Calculate prices
     const addDecimals = (num) => {
@@ -78,6 +81,12 @@ const OrderScreen = ({ match, history }) => {
     <Message variant="danger">{error}</Message>
   ) : (
     <>
+      {userInfo && userInfo.isAdmin && (
+        <Link to="/admin/orderlist" className="btn btn-light my-3">
+          Back to Orders...
+        </Link>
+      )}
+
       <h1>Order {order._id}</h1>
       <Row>
         <Col md={8}>
