@@ -66,6 +66,8 @@ const AllOrdersScreen = ({ history }) => {
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>
                   {order.isPaid ? (
+                    // order.paidAt.substring(0,10)
+
                     <i className="fas fa-check" style={{ color: 'green' }}></i>
                   ) : (
                     <i className="fas fa-times" style={{ color: 'red' }}></i>
