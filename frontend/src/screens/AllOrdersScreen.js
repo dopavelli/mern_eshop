@@ -4,6 +4,7 @@ import { Table, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
+import Meta from '../components/Meta';
 import { listAllOrders } from '../actions/orderActions';
 
 const AllOrdersScreen = ({ history }) => {
@@ -31,6 +32,7 @@ const AllOrdersScreen = ({ history }) => {
 
   return (
     <>
+      <Meta title="Admin/All Orders" />
       <h1>All ORDERS</h1>
 
       {loading ? (

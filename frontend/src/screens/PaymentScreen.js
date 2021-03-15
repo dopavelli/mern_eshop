@@ -3,6 +3,7 @@ import { Form, Button, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import FormContainer from '../components/FormContainer';
 import CheckoutSteps from '../components/CheckoutSteps';
+import Meta from '../components/Meta';
 import { savePaymentMethod } from '../actions/cartActions';
 
 const PaymentScreen = ({ history }) => {
@@ -24,37 +25,39 @@ const PaymentScreen = ({ history }) => {
   };
 
   return (
-    <FormContainer>
-      <CheckoutSteps step1 step2 step3 />
+    <>
+      <Meta title="Payment" />
+      <FormContainer>
+        <CheckoutSteps step1 step2 step3 />
 
-      <h1>Payment Method</h1>
+        <h1>Payment Method</h1>
 
-      <Form onSubmit={submitHandler}>
-        <Form.Group>
-          <Form.Label as="legend">
-            <h2>Select Method</h2>
-          </Form.Label>
-          <Col>
-            <Form.Check
-              type="radio"
-              label="Paypal or Credit Card"
-              id="PayPal"
-              name="paymentMethod"
-              value="PayPal"
-              checked
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            ></Form.Check>
-            {/* Additional methods can be added here */}
-            <Form.Check
-              type="radio"
-              label="Stripe (currently not available)"
-              id="Stripe"
-              name="paymentMethod"
-              value="Stripe"
-              disabled
-              onChange={(e) => setPaymentMethod(e.target.value)}
-            ></Form.Check>
-            {/* {//Additional methods can be added here}
+        <Form onSubmit={submitHandler}>
+          <Form.Group>
+            <Form.Label as="legend">
+              <h2>Select Method</h2>
+            </Form.Label>
+            <Col>
+              <Form.Check
+                type="radio"
+                label="Paypal or Credit Card"
+                id="PayPal"
+                name="paymentMethod"
+                value="PayPal"
+                checked
+                onChange={(e) => setPaymentMethod(e.target.value)}
+              ></Form.Check>
+              {/* Additional methods can be added here */}
+              <Form.Check
+                type="radio"
+                label="Stripe (currently not available)"
+                id="Stripe"
+                name="paymentMethod"
+                value="Stripe"
+                disabled
+                onChange={(e) => setPaymentMethod(e.target.value)}
+              ></Form.Check>
+              {/* {//Additional methods can be added here}
             <Form.Check
               type="radio"
               label="Stripe"
@@ -63,13 +66,14 @@ const PaymentScreen = ({ history }) => {
               value="Stripe"
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></Form.Check> */}
-          </Col>
-        </Form.Group>
-        <Button type="submit" variant="primary">
-          Continue
-        </Button>
-      </Form>
-    </FormContainer>
+            </Col>
+          </Form.Group>
+          <Button type="submit" variant="primary">
+            Continue
+          </Button>
+        </Form>
+      </FormContainer>
+    </>
   );
 };
 

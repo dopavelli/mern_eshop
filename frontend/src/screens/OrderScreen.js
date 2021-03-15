@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
+import Meta from '../components/Meta';
 import {
   getOrderDetails,
   payOrder,
@@ -97,6 +98,7 @@ const OrderScreen = ({ match, history }) => {
     <Message variant="danger">{error}</Message>
   ) : (
     <>
+      <Meta title="Order" />
       {userInfo && userInfo.isAdmin && (
         <Link to="/admin/orderlist" className="btn btn-light my-3">
           Back to Orders...

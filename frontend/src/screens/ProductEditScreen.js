@@ -5,6 +5,7 @@ import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
+import Meta from '../components/Meta';
 import FormContainer from '../components/FormContainer';
 import { listProductDetails, updateProduct } from '../actions/productActions';
 import { PRODUCT_UPDATE_RESET } from '../constants/productConstants';
@@ -93,6 +94,7 @@ const ProductEditScreen = ({ match, history }) => {
 
   return (
     <>
+      <Meta title="Admin/Product" />
       <Link to="/admin/productlist" className="btn btn-light my-3">
         Go Back...
       </Link>
