@@ -86,7 +86,7 @@ const AllOrdersScreen = ({ history }) => {
                       <i className="fas fa-shopping-cart"></i> Details...
                     </Button>
                   </LinkContainer>{' '}
-                  <Button
+                  {/* <Button
                     variant="danger"
                     className="btn-sm"
                     onClick={() => {
@@ -94,7 +94,7 @@ const AllOrdersScreen = ({ history }) => {
                     }}
                   >
                     <i className="fas fa-trash"></i>
-                  </Button>
+                  </Button> */}
                 </td>
               </tr>
             ))}
