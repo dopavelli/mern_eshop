@@ -15,6 +15,7 @@ const SearchBox = ({ history }) => {
 
   const clearFilter = () => {
     setKeyword('');
+
     history.push('/');
   };
 
